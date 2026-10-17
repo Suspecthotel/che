@@ -1,3 +1,4 @@
+#include def.h
 
 // start of possiblemoves
 Move* possiblemoves(char* board){
