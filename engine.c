@@ -14,7 +14,7 @@ char value;
 } Suggestion;
 
 
-char bestmoverec(char* board, char recdepth);
+char bestmoverec(char* board, char recdepth, Move* move);
 Move* bestmove(char* board, char recdepth);
 char* boardaftermove(char* board, Move move);
 int findlength(Move* moves);
@@ -57,14 +57,14 @@ if( calculatevaluedif(boardaftermove(*board, *(possibletogo+i))) > suggestedvalu
 
 //__________________________________________________________________________________________________________________________________
 
-Suggestion bestmoverec(char* board, char recdepth){
+Suggestion bestmoverec(char* board, char recdepth, Move* result){
 Suggestion way;
-if(recdepth == 0){way.value= calculatevaluedif(boardaftermove); way.move = move; return way;}
+if(recdepth == 0){way.value= calculatevaluedif(boardaftermove); way.move = move; result=way.move; return way;}
 
 
 Move* tosee = possiblemoves(board);
 for(int i=0; i< findlength(tosee); i++){
-Suggestion attempt = bestmoverec ( boardaftermove(board, *(tosee+i)), recdepth-1 ).value;
+Suggestion attempt = bestmoverec ( boardaftermove(board, *(tosee+i)), recdepth-1，move ).value;
 if(attempt.value > way.value){way = attempt;}
 }//end of for loop
 
