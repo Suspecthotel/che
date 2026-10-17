@@ -6,11 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "possiblemoves.c"
-
-typedef struct{
-char from;
-char to;
-} Move;
+#include "def.h"
 
 typedef struct{
 Move move;
